@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Registration</title>
+</head>
+<body>
+
+    <h2>Register for the Event</h2>
+    <form id="registrationForm">
+        <label for="name">Full Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email Address:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="event">Select Event:</label><br>
+        <select id="event" name="event" required>
+            <option value="">--Please choose an event--</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Seminar">Seminar</option>
+            <option value="Networking">Networking</option>
+        </select><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <div id="confirmation"></div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const confirmation = document.getElementById('confirmation');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const selectedEvent = document.getElementById('event').value;
+
+            if (!name || !email || !selectedEvent) {
+                confirmation.textContent = "Please fill in all fields.";
+                return;
+            }
+
+            confirmation.textContent = "Successfully registration completed.";
+
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
